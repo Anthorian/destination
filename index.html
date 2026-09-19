@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>// featherbomb //</title>
+<base target="_top">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+/*
+/* 
+ * HTML5 ✰ Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling. 
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ *
+ * Detailed information about this CSS: h5bp.com/css
+ * 
+ * Dreamweaver modifications:
+ * 1. Commented out selection highlight
+ * 2. Removed media queries section (we add our own in a separate file)
+ *
+ * ==|== normalize ==========================================================
+ */
+
+
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/*
+ * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
+ * 2. Force vertical scrollbar in non-IE
+ * 3. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
+ */
+
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body { margin: 0; font-size: 13px; line-height: 130%;}
+
+body, button, input, select, textarea { font-family: sans-serif; }
+
+/* 
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate
+ * Also: hot pink! (or customize the background color to match your design)
+ */
+
+ /* Dreamweaver: uncomment these if you do want to customize the selection highlight */
+ *::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+ *::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+ 
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a { color: #00e; }
+a:visited { color: #551a8b; }
+a:hover { color: #06e; }
+a:focus { outline: thin dotted; }
+
+/* Improve readability when focused and hovered in all browsers: h5bp.com/h */
+a:hover, a:active { outline: 0; }
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: bold; }
+
+blockquote { margin: 1em 40px; }
+
+dfn { font-style: italic; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+/* ins { background: #ff9; color: #000; text-decoration: none; }*/
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+/* Redeclare monospace font family: h5bp.com/j */
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+
+/* Improve readability of pre-formatted text in all browsers */
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol {
+	margin: 1em 0;
+	padding: 0 0 0 40px;
+	list-style-type: none;
+}
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+/*
+ * 1. Improve image quality when scaled in IE7: h5bp.com/d
+ * 2. Remove the gap between images and borders on image containers: h5bp.com/e 
+ */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+/*
+ * Correct overflow not hidden in IE9 
+ */
+
+svg:not(:root) { overflow: hidden; }
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+figure { margin: 0; }
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+
+/* Indicate that 'label' will shift focus to the associated form element */
+label { cursor: pointer; }
+
+/* 
+ * 1. Correct color not inheriting in IE6/7/8/9 
+ * 2. Correct alignment displayed oddly in IE6/7 
+ */
+
+legend { border: 0; *margin-left: -7px; padding: 0; }
+
+/*
+ * 1. Correct font-size not inheriting in all browsers
+ * 2. Remove margins in FF3/4 S5 Chrome
+ * 3. Define consistent vertical alignment display in all browsers
+ */
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+/*
+ * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
+ * 2. Correct inner spacing displayed oddly in IE6/7
+ */
+
+button, input { line-height: normal; *overflow: visible; }
+
+/*
+ * Reintroduce inner spacing in 'table' to avoid overlap and whitespace issues in IE6/7
+ */
+
+table button, table input { *overflow: auto; }
+
+/*
+ * 1. Display hand cursor for clickable form elements
+ * 2. Allow styling of clickable form elements in iOS
+ */
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+
+/*
+ * Consistent box sizing and appearance
+ */
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/* 
+ * Remove inner padding and border in FF3/4: h5bp.com/l 
+ */
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+/* 
+ * 1. Remove default vertical scrollbar in IE6/7/8/9 
+ * 2. Allow only vertical resizing
+ */
+
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+/* ==|== primary styles =====================================================
+   Author: 
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */ 
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+ 
+ @media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+
+
+/* Simple fluid media
+   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/
+
+
+
+img, object, embed, video {
+	max-width: 100%;
+}
+/* IE 6 does not support max-width so default to width 100% */
+
+
+
+.ie6 img {
+	width: 100%;
+}
+/*
+	Dreamweaver Fluid Grid Properties
+	----------------------------------
+	dw-num-cols-mobile:		5;
+	dw-num-cols-tablet:		8;
+	dw-num-cols-desktop:	12;
+	dw-gutter-percentage:	10;
+	
+	Inspiration from "Responsive Web Design" by Ethan Marcotte 
+	http://www.alistapart.com/articles/responsive-web-design
+	
+	and Golden Grid System by Joni Korpi
+	http://goldengridsystem.com/
+*/
+
+
+
+/* List Style */
+
+
+ul {
+	margin: 0px;
+	padding: 0 0 0 0px;
+}
+li {
+	margin:  8px 0 8px 0;
+	/*padding: 8px 0 8px 0;*/
+	list-style-type: none;
+	/*text-shadow:0px 1px #fff;*/
+}
+
+
+/* Mobile Layout: 480px and below. */
+body {
+	background-color: #0A0E13;
+}
+.gridContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 89.3454%;
+	padding-left: 0.8272%;
+	padding-right: 0.8272%;
+}
+#wrapper {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#header {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	display: none;
+	width: 100%;
+	height: 100px;
+	
+	background-position: left;
+	background-repeat: no-repeat;
+}
+#hero-image {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	height: 90px;
+	/**/
+	/*background-image: url("https://w0.peakpx.com/wallpaper/386/268/HD-wallpaper-tokyo-illumination-street-skyscrapers-asia-japan.jpg");*/
+	background-image: none;
+    background-size: cover;
+	background-position: center bottom;
+	border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+#content-search {
+	display: none;
+}
+#content-gaming {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-music {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-news {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-tech {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-design {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-local {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+.contentcolumn {
+	clear: none;
+	float: left;
+	margin-left: 0.7633%;
+	width: 49%;
+	display: block;
+	padding: 0px;
+}
+#content-hardware {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-guitars {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+/*  Hardware section Columns  */
+#content-hardware-a {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-hardware-b {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-bull {
+	clear: none;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+#content-bull input[type=text] {
+	margin: 10px 0 0 0;
+	padding: 3px;
+	height: 24px;
+	width: 70%;
+	border-radius: var(--radius-sm);
+	background-color: #FFFFCC;	/*border: 1px #EC008C solid;*/
+}
+#content-connection {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+
+@media only screen and (min-width: 481px) {
+.gridContainer {
+	width: 91.9431%;
+	padding-left: 0.5284%;
+	padding-right: 0.5284%;
+}
+#wrapper {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#header {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	background-image: none;
+}
+#hero-image {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	height: 150px;
+	background-image: none;
+	  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+	border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+/*Activating Search display*/
+#content-search {
+	display: block;
+}
+#main-search-table {
+	background-color: #232A31;
+	border-radius: var(--radius-md);
+	margin-top:24px;
+	}
+#main-search-table tr,td{
+	padding:16px
+	}
+#content-search input {
+	margin: 3px 0 3px 0;
+}
+#content-search form {
+	margin: 0 0 8px 0;
+}
+#content-search input {
+	width: 90%;
+}
+#content-search input[type=text] {
+    height: 30px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #999;
+    padding: 0 0 0 5px;
+}
+#content-search-forms {
+	text-align: center;
+	padding: 0 10px 0 10px;
+}
+#content-gaming {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 49.4252%;
+	display: block;
+}
+#content-music {
+	clear: none;
+	float: left;
+	margin-left: 1.1494%;
+	width: 49.4252%;
+	display: block;
+}
+#content-news {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-tech {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-design {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-local {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#column-games-1 {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-hardware {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-hardware {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-bull {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#content-connection {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+}
+
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+
+@media only screen and (min-width : 1000px ){
+	
+/* List Style */
+
+ul {
+	margin: 0px;
+	padding: 0 0 0 0px;
+}
+li {
+	margin: 0px;
+	padding: 4px 0 4px 0;
+	list-style-type: none;
+}
+.gridContainer {
+	width: 89.3181%;
+	max-width: 1232px;
+	padding-left: 0.3409%;
+	padding-right: 0.3409%;
+	margin: auto;
+}
+#wrapper {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#header {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	height: 120px;
+	display: block;
+	
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+#hero-image {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	height: 360px;
+	/*background-image: url(https://i.imgur.com/eTcAR7H.jpeg);*/
+	background-image: none;
+	  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+#content-search {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 16.0305%;
+	display: block;
+	/*overflow:hidden;*/
+}
+#content-gaming {
+	clear: none;
+	float: left;
+	margin-left: 0.7633%;
+	width: 32.8244%;
+	display: block;
+}
+#content-music {
+	clear: none;
+	float: left;
+	margin-left: 0.7633%;
+	width: 32.8244%;
+	display: block;
+}
+#content-news {
+	clear: none;
+	float: left;
+	margin-left: 0.7633%;
+	width: 32.8244%;
+	display: block;
+}
+#content-tech {
+	clear: none;
+	float: left;
+	margin-left: 0.7633%;
+	width: 32.8244%;
+	display: block;
+}
+#content-design {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 32.8244%;
+	display: block;
+}
+#content-local {
+	clear: none;
+	float: left;
+	margin-left: 0.7633%;
+	width: 16.0305%;
+	display: block;
+}
+#content-hardware {
+	clear: both;
+	float: left;
+	margin-left: 16.7938%;
+	width: 66.4121%;
+	display: block;
+}
+#content-guitars {
+	clear: none;
+	float: left;
+	margin-left: 0.7633%;
+	width: 16.0305%;
+	display: block;
+}
+#content-hardware-a {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 49.4%;
+	display: block;
+}
+#content-hardware-b {
+	clear: none;
+	float: left;
+	margin-left: 1.1494%;
+	width: 49.4%;
+	display: block;
+}
+#content-bull {
+	clear: both;
+	float: left;
+	margin-left: 16.7938%;
+	width: 83.2061%;
+	display: block;
+}
+#content-connection {
+	clear: none;
+	float: left;
+	margin-left: 0.7633%;
+	width: 16.0305%;
+	display: block;
+}
+}
+
+
+/* CSS Document */
+
+
+
+body {
+	margin: 0;
+	font-size: 13px;
+}
+body, button, select, textarea {
+	font-family: 'Roboto', sans-serif;
+	/*This controls the main text color*/
+	color: #FFFFFF;
+}
+input {
+	font-family: 'Roboto', sans-serif;
+	/*This controls the input text color*/
+	color: #888888;
+}
+strong {
+	font-weight: 700;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto Slab', serif;
+	font-weight: normal;
+	color: #EC008C;
+}
+h2 {
+	position: relative;
+	font-size: 24px;
+	line-height: 120%;
+	margin: 20px 0 14px 0;
+	padding-bottom: 9px;
+}
+h2::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 3px;
+	border-radius: 999px;
+	background: #EC008C;
+}
+.captitle {
+	font-family: 'Roboto Slab', serif;
+	font-weight: normal;
+	color: #EC008C;
+	text-transform: uppercase;
+	font-size: 103%;
+}
+/* _______________ Links */
+
+a:link, a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+    /*padding:5px;
+	border: 0px solid #fff;*/
+    -o-transition: .3s ease-out;
+    -ms-transition: .3s ease-out;
+    -moz-transition: .3s ease-out;
+    -webkit-transition: .3s ease-out;
+}
+a:hover, a:active {
+	/*color: #EC008C;*/
+	text-decoration:underline;
+	/*padding:4px;
+	border: 1px solid #EC008C;*/
+	-o-transition: .2s ease-in;
+	-ms-transition: .2s ease-in;
+	-moz-transition: .2s ease-in;
+	-webkit-transition: .2s ease-in;
+}
+
+/* _______________ bubblebutton */
+.bubblebutton {
+	/*-moz-box-shadow: inset 0px 1px 0px 0px #fbafe3;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #fbafe3;
+	box-shadow: inset 0px 1px 0px 0px #fbafe3;
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff5bb0), color-stop(1, #ef027d) );
+	background: -moz-linear-gradient( center top, #ff5bb0 5%, #ef027d 100% );
+ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bb0', endColorstr='#ef027d');*/
+	background-color: #EC008C;
+	border-radius: var(--radius-sm);
+	border: 1px solid #ee1eb5;
+	display: inline-block;
+	color: #ffffff;
+	font-family: arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 8px 24px;
+	text-decoration: none;
+	/*text-shadow: 1px 1px 0px #c70067;*/
+	margin: 0 10px 0 0;
+}
+.bubblebutton:hover {
+	/*background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ef027d), color-stop(1, #ff5bb0) );
+	background: -moz-linear-gradient( center top, #ef027d 5%, #ff5bb0 100% );
+ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef027d', endColorstr='#ff5bb0');*/
+	background-color: #5C0140;
+	border: 	1px solid #5C0140;
+}
+.bubblebutton:active {
+	position: relative;
+	top: 1px;
+}
+
+
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+:root{--radius-sm:6px;--radius-md:10px;--radius-lg:20px;}
+html,body{background-color:#0A0E13;}
+
+/* Hero: full-bleed diagonal color sweep with a live particle system on top */
+#hero-image {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #7A2FFF;
+  background-image: linear-gradient(125deg, #ff2d14, #ff9600, #ffd200, #00e696, #00dcdc, #0096ff, #822eff, #e600dc);
+}
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -1;
+}
+#hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+  opacity: .8;
+  pointer-events: none;
+}
+
+</style>
+<script type="text/javascript">
+function MM_openBrWindow(theURL,winName,features) {
+  window.open(theURL,winName,features);
+}
+</script>
+<meta name="theme-color" content="#EC008C">
+<style>
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover,
+  a:focus {
+    color: #EC008C;
+    outline: none;
+  }
+  /* Fade transition for form buttons */
+  input.bubblebutton[type="submit"],
+  input.bubblebutton[type="button"] {
+    background-color: #EC008C;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  input.bubblebutton[type="submit"]:hover,
+  input.bubblebutton[type="button"]:hover,
+  input.bubblebutton[type="submit"]:focus,
+  input.bubblebutton[type="button"]:focus {
+    background-color: #5C0140;
+    outline: none;
+  }
+  .suggested-link {
+    margin-top: 6px !important;
+  }
+  .suggested-link a {
+    color: #9AA0A8;
+  }
+  .suggested-link a:hover,
+  .suggested-link a:focus {
+    color: #ffffff;
+  }
+  .sug-mark {
+    color: #9AA0A8;
+    font-size: 10px;
+    margin-right: 5px;
+  }
+  .suggest-footnote {
+    clear: both;
+    display: block;
+    color: #6b7078;
+    font-size: 12px;
+    padding: 8px 0 24px 0;
+  }
+  .suggest-footnote .sug-mark {
+    margin-right: 4px;
+  }
+  .spacer-li {
+    visibility: hidden;
+  }
+</style>
+</head>
+<body>
+<div class="gridContainer clearfix">
+  <div id="wrapper">
+    <!-- <div id="header"></div> -->
+    <div id="hero-image"><canvas id="hero-canvas"></canvas></div>
+    <script>
+    (function () {
+      var colors = [
+        "255,45,20",
+        "255,150,0",
+        "255,210,0",
+        "0,230,150",
+        "0,220,220",
+        "0,150,255",
+        "130,30,255",
+        "230,0,220"
+      ];
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+
+      var start = Math.floor(rand(0, colors.length));
+      var reverse = Math.random() < 0.5;
+      var base8 = colors.slice(start).concat(colors.slice(0, start));
+      if (reverse) base8.reverse();
+      var n = base8.length;
+
+      var angle = rand(105, 145).toFixed(0);
+      var base = "linear-gradient(" + angle + "deg, " + base8.map(function (c, i) {
+        return "rgb(" + c + ") " + (i / (n - 1) * 100).toFixed(0) + "%";
+      }).join(", ") + ")";
+
+      var hero = document.getElementById("hero-image");
+      if (hero) { hero.style.backgroundImage = base; }
+
+      function posForT(t) {
+        return { fx: (5 + t * 90 + rand(-8, 8)) / 100, fy: (5 + t * 90 + rand(-8, 8)) / 100 };
+      }
+
+      function makeParticle(color, t, radiusPct, alpha) {
+        var home = posForT(t);
+        return {
+          color: color,
+          homeX: home.fx, homeY: home.fy,
+          x: home.fx, y: home.fy,
+          vx: 0, vy: 0,
+          r: radiusPct / 100,
+          alpha: alpha
+        };
+      }
+
+      var soft = base8.map(function (c, i) {
+        return makeParticle(c, i / (n - 1), rand(42, 58), 0.85);
+      });
+      var sharpTs = [0, 0.33, 0.66, 1];
+      var sharp = sharpTs.map(function (t) {
+        var idx = Math.round(t * (n - 1));
+        return makeParticle(base8[idx], t, rand(16, 25), 0.8);
+      });
+
+      var canvas = document.getElementById("hero-canvas");
+      if (!canvas || !canvas.getContext) return;
+      var ctx = canvas.getContext("2d");
+      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      function resize() {
+        w = hero.clientWidth; h = hero.clientHeight;
+        canvas.width = Math.max(1, Math.round(w * dpr));
+        canvas.height = Math.max(1, Math.round(h * dpr));
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+      }
+      resize();
+      window.addEventListener("resize", resize);
+
+      function drawBlob(p) {
+        var x = p.x * w, y = p.y * h;
+        var r = p.r * Math.max(w, h);
+        var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+        g.addColorStop(0, "rgba(" + p.color + "," + p.alpha + ")");
+        g.addColorStop(1, "rgba(" + p.color + ",0)");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function step(p, dt, jitter, spring, damping) {
+        var ax = (p.homeX - p.x) * spring + (Math.random() - 0.5) * jitter;
+        var ay = (p.homeY - p.y) * spring + (Math.random() - 0.5) * jitter;
+        p.vx = (p.vx + ax * dt) * damping;
+        p.vy = (p.vy + ay * dt) * damping;
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+      }
+
+      function render() {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, w, h);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.filter = "blur(46px)";
+        soft.forEach(drawBlob);
+        ctx.filter = "blur(9px)";
+        ctx.globalCompositeOperation = "screen";
+        sharp.forEach(drawBlob);
+        ctx.filter = "none";
+        ctx.globalCompositeOperation = "source-over";
+      }
+
+      if (reduceMotion) {
+        render();
+        return;
+      }
+
+      var last = performance.now();
+      function frame(now) {
+        var dt = Math.min((now - last) / 1000, 0.1);
+        last = now;
+        soft.forEach(function (p) { step(p, dt, 0.9, 0.9, 0.985); });
+        sharp.forEach(function (p) { step(p, dt, 1.3, 1.1, 0.98); });
+        render();
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+    </script>
+
+    <div style="clear:both; height:10px;"></div>
+    <div id="content-search">
+      <a id="quick"></a>
+      <table id="main-search-table" border="0" cellspacing="0" width="96%">
+        <tbody>
+          <tr>
+            <td style="text-align:center; margin: 0 10px;">
+              <!-- Google Search -->
+              <form action="https://www.google.com/search" method="get" name="f">
+                <input name="q" type="text" value="Google" onfocus="if(this.value=='Google'){this.value='';}" onblur="if(this.value==''){this.value='Google';}">
+                <br>
+                <input class="bubblebutton" type="submit" value="Go">
+              </form>
+              <!-- Google Maps Search -->
+              <div id="search-maps">
+                <form action="https://www.google.com/maps/search/" method="get">
+                  <input name="api" type="hidden" value="1">
+                  <input name="query" type="text" value="Maps" onfocus="if(this.value=='Maps'){this.value='';}" onblur="if(this.value==''){this.value='Maps';}">
+                  <br>
+                  <input class="bubblebutton" type="submit" value="Go">
+                </form>
+              </div>
+              <!-- eBay Search -->
+              <div id="search-ebay">
+                <form action="https://www.ebay.com/sch/i.html" method="get" id="gh-f">
+                  <input id="gh-ac" name="_nkw" type="text" value="eBay" onfocus="if(this.value=='eBay'){this.value='';}" onblur="if(this.value==''){this.value='eBay';}">
+                  <br>
+                  <input class="bubblebutton" type="submit" value="Go">
+                </form>
+              </div>
+              <!-- Amazon Search -->
+              <div id="search-amazon">
+                <form action="https://www.amazon.com/s/ref=nb_sb_noss" class="nav-searchbar" method="GET" name="site-search" role="search">
+                  <input id="twotabsearchtextbox" name="field-keywords" type="text" value="Amazon" autocomplete="off" class="nav-input" data-nav-tabindex="21" onfocus="if(this.value=='Amazon'){this.value='';}" onblur="if(this.value==''){this.value='Amazon';}">
+                  <br>
+                  <input class="bubblebutton" type="submit" value="Go">
+                </form>
+              </div>
+              <!-- YouTube Search -->
+              <div id="search-youtube">
+                <form id="vb_yt_search-form" action="https://www.youtube.com/results" method="get">
+                  <input id="masthead-search-term" class="search-term yt-uix-form-input-bidi" name="search_query" type="text" value="YouTube" title="Search" onfocus="if(this.value=='YouTube'){this.value='';}" onblur="if(this.value==''){this.value='YouTube';}">
+                  <input class="bubblebutton" type="submit" id="search-btn" dir="ltr" role="button" value="Go">
+                </form>
+              </div>
+              <!-- Craigslist Search -->
+              <div id="search-craigs">
+                <form action="https://washingtondc.craigslist.org/search/" method="get">
+                  <input name="areaID" type="hidden" value="10">
+                  <input name="subAreaID" type="hidden" value="">
+                  <input id="query" name="query" class="srchInputBox" type="text" value="Craigslist" onfocus="if(this.value=='Craigslist'){this.value='';}" onblur="if(this.value==''){this.value='Craigslist';}">
+                  <br>
+                  <!-- select name="catAbb">
+                    <option value="ccc">community</option>
+                    <option value="eee">events</option>
+                    <option value="ggg">gigs</option>
+                    <option value="hhh">housing</option>
+                    <option value="jjj">jobs</option>
+                    <option value="ppp">personals</option>
+                    <option value="res">resumes</option>
+                    <option value="sss" selected>for sale</option>
+                    <option value="bbb">services</option>
+                  </select -->
+                  <input class="bubblebutton" type="submit" value="Go">
+                </form>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Content Sections -->
+    <div id="content-news">
+      <h2>Intel</h2>
+      <div class="contentcolumn">
+        <ul data-suggest="intel-1">
+          <li><a href="https://www.washingtonpost.com/"><strong>Washington Post</strong></a></li>
+          <li><a href="https://www.bbc.co.uk/news/">The BBC</a> | <a href="javascript:void(0);" onclick="MM_openBrWindow('https://www.bbc.co.uk/radio/player/bbc_world_service#','','width=400,height=600');return false;">Radio</a></li>
+          <li><a href="https://www.huffingtonpost.com/"><strong>Huffington Post</strong></a></li>
+          <li><a href="https://www.cnn.com/"><strong>CNN.com</strong></a></li>
+          <li><a href="https://www.usatoday.com/"><strong>USAToday</strong></a></li>
+          <li><a href="https://online.wsj.com/">Wall Street Journal</a></li>
+          <li><a href="https://www.axios.com/">Axios</a></li>
+          <li><a href="https://www.time.com/">Time</a></li>
+          <li><a href="https://www.theguardian.com/uk">Guardian UK</a></li>
+          <li><a href="https://www.wtop.com/"><strong>WTOP.com</strong></a> | <a href="https://www.wtop.com/listen-live/">Listen</a></li>
+          <li><a href="https://www.washingtontimes.com/">Washington Times</a></li>
+          <li><a href="https://www.nbcnews.com/">NBC News</a></li>
+          <li><a href="https://www.cbsnews.com/">CBS News</a></li>
+          <li><a href="https://www.abcnews.com/">ABC News</a></li>
+          <li><a href="https://www.foxnews.com/">Fox News</a></li>
+        </ul>
+      </div>
+      <div class="contentcolumn">
+        <ul data-suggest="intel-2">
+          <li><a href="https://www.yahoo.com/"><strong>Yahoo</strong></a></li>
+          <li><a href="https://flipboard.com/following"><strong>Flipboard</strong></a></li>
+          <li><a href="https://news.yahoo.com/"><strong>Yahoo News</strong></a></li>
+          <li><a href="https://news.google.com/"><strong>Google News</strong></a></li>
+          <li><a href="https://www.ffxnow.com/tag/reston/"><strong>FFX Now</strong></a></li>
+          <li><a href="https://thehill.com/">The Hill</a></li>
+          <li><a href="https://qz.com/">Quartz</a></li>
+          <li><a href="https://www.marketwatch.com/"><strong>Marketwatch</strong></a></li>
+          <li><a href="https://www.nytimes.com/"><strong>New York Times</strong></a></li>
+          <li><a href="https://www.economist.com/">The Economist</a></li>
+          <li><a href="https://www.nasdaq.com/">NASDAQ.com</a></li>
+          <li><a href="https://www.reuters.com/"><strong>Reuters</strong></a></li>
+          <li><a href="https://finance.yahoo.com/"><strong>Y! Finance</strong></a></li>
+          <li><a href="https://www.bloomberg.com/"><strong>Bloomberg.com</strong></a></li>
+          <li><a href="https://www.straitstimes.com/global"><strong>The Straights Times</strong></a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content-tech">
+      <h2>Industry</h2>
+      <div class="contentcolumn">
+        <ul data-suggest="industry-1">
+          <li><a href="https://reallygoodemails.com/"><strong>Really Good Emails</strong></a></li>
+          <li><a href="https://www.behance.com/">behance</a></li>
+          <li><a href="https://www.adage.com/">Ad Age</a></li>
+          <li><a href="http://user-interface.alltop.com/"><strong>AllTop (UI)</strong></a></li>
+          <li><a href="https://webfieldmanual.com/"><strong>Web Field Manual</strong></a></li>
+          <li><a href="https://www.underconsideration.com/brandnew/">Under Consideration</a></li>
+          <li><a href="https://www.creativebloq.com/">CreativeBloq</a></li>
+          <li><a href="https://webdesignledger.com/">Web Design Ledger</a></li>
+          <li><a href="https://www.businessinsider.com/"><strong>The Alley Insider</strong></a></li>
+          <li><a href="https://creativity-online.com/">Creativity Mag</a></li>
+          <li><a href="https://www.webdesignerdepot.com/"><strong>Web Designer Depot</strong></a></li>
+          <li><a href="https://www.adweek.com/">AdWeek</a></li>
+          <li><a href="https://www.fastcodesign.com/"><strong>FastCo Design</strong></a></li>
+          <li><a href="https://create.adobe.com/">Adobe Create</a></li>
+          <li><a href="https://www.pcmag.com/">PC Mag</a> | <a href="https://www.pcworld.com/">World</a></li>
+        </ul>
+      </div>
+      <div class="contentcolumn">
+        <ul data-suggest="industry-2">
+          <li><a href="https://www.dribbble.com/">dribbble</a></li>
+          <li><a href="https://www.itsnicethat.com/"><strong>It's Nice That</strong></a></li>
+          <li><a href="https://www.featherbomb.com/">Featherbomb</a></li>
+          <li><a href="https://techcrunch.com/"><strong>TechCrunch</strong></a></li>
+          <li><a href="https://recode.net/">Re/Code</a></li>
+          <li><a href="https://thecoolhunter.net/">The Cool Hunter</a></li>
+          <li><a href="https://www.mashable.com/">Mashable</a></li>
+          <li><a href="https://www.thenextweb.com/"><strong>The Next Web</strong></a></li>
+          <li><a href="https://ilovetypography.com/">ILoveTypography</a></li>
+          <li><a href="https://onepagelove.com/">One Page Love</a></li>
+          <li><a href="https://arstechnica.com/">Ars Technica</a></li>
+          <li><a href="https://smashingmagazine.com/"><strong>Smashing Magazine</strong></a></li>
+          <li><a href="https://alistapart.com/"><strong>A List Apart</strong></a></li>
+          <li><a href="https://www.codecademy.com/">Codecademy</a></li>
+          <li class="spacer-li" aria-hidden="true">&nbsp;</li>
+        </ul>
+      </div>
+    </div>
+    <div id="content-connection">
+      <h2>Humans</h2>
+      <ul>
+        <li class="captitle">Comms</li>
+        <li><strong><a href="https://www.gmail.com/">Gmail</a></strong> | <a href="https://mail.aol.com/">AOL</a> | <a href="https://mail.yahoo.com/d/folders/61">Y!</a></li>
+        <li><strong>G:</strong> <a href="https://drive.google.com/">Drive</a> | <a href="https://calendar.google.com/">Cal</a> | <a href="https://photos.google.com/">Pix</a> | <a href="https://voice.google.com/">Voice</a></li>
+        <li><a href="https://www.messenger.com/">F/Messenger</a></li>
+        <li class="captitle">Social</li>
+        <li><a href="https://www.reddit.com/"><strong>Reddit</strong></a></li>
+        <li><a href="https://www.facebook.com/"><strong>Facebook</strong></a> • <a href="https://www.facebook.com/marketplace">Market</a></li>
+        <li><a href="https://instagram.com/"><strong>Instagram</strong></a></li>
+        <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+      </ul>
+		<ul>
+		<li class="captitle">Seek</li>
+		  <li><a href="https://scout.yahoo.com/"><strong>Yahoo Scout</strong></a></li>
+		  <li><a href="https://gemini.google.com/"><strong>Gemini</strong></a></li>
+		  <li><a href="https://www.claude.ai/"><strong>Claude</strong></a></li>
+		  <li><a href="https://www.perplexity.ai/">Perplexity</a></li>
+		  <li><a href="https://www.deepl.com/en/translator/l/en/ja">DeepL E➜J</a></li>
+      </ul>
+    </div>
+    <div id="content-gaming">
+      <h2>Electrotainment</h2>
+      <div class="contentcolumn">
+        <ul data-suggest="electro-1">
+          <li><a href="https://www.metacritic.com/"><strong>Metacritic</strong></a></li>
+          <li><a href="https://www.polygon.com/"><strong>Polygon</strong></a></li>
+          <li><a href="https://www.dexerto.com/"><strong>Dexerto</strong></a></li>
+          <li><a href="https://www.destructoid.com/">Destructoid</a></li>
+          <li><a href="https://www.tomshardware.com/">Tom's Hardware</a></li>
+          <li><a href="https://www.hothardware.com/">Hot Hardware</a></li>
+          <li><a href="https://www.gamespot.com/"><strong>Gamespot</strong></a></li>
+          <li><a href="https://www.rockpapershotgun.com/"><strong>Rock Paper Shotgun</strong></a></li>
+        </ul>
+      </div>
+      <div class="contentcolumn">
+        <ul data-suggest="electro-2">
+          <li><a href="https://www.inverse.com/"><strong>Inverse</strong></a></li>
+          <li><a href="https://www.pcgamer.com/"><strong>PC Gamer</strong></a></li>
+          <li><a href="https://www.denofgeek.com/games/"><strong>DenOfGeek/Games</strong></a></li>
+          <li><a href="https://www.ign.com/nintendo">IGN Switch</a></li>
+          <li><a href="https://www.ign.com/pc">IGN PC</a></li>
+          <li><a href="https://www.ign.com/xbox-one"><strong>IGN XBox</strong></a></li>
+          <li><a href="https://www.ign.com/playstation"><strong>IGN PS</strong></a></li>
+          <li><a href="https://www.hothardware.com/">Hot Hardware</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content-music">
+      <h2>Music</h2>
+      <div class="contentcolumn">
+        <ul data-suggest="music-1">
+          <li><a href="https://www.loudwire.com/">LoudWire</a></li>
+          <li><a href="https://www.rollingstone.com/">Rolling Stone</a></li>
+          <li><a href="https://www.revolvermag.com/">Revolver Magazine</a></li>
+          <li><a href="https://www.sputnikmusic.com/"><strong>Sputnik Music</strong></a></li>
+          <li><a href="https://www.blabbermouth.net/"><strong>Blabbermouth</strong></a></li>
+          <li><a href="https://www.pitchforkmedia.com/"><strong>Pitchfork</strong></a></li>
+          <li><a href="https://www.harmonycentral.com/"><strong>HarmonyCentral</strong></a></li>
+          <li><a href="https://www.melodicrock.com/">Melodic Rock</a></li>
+        </ul>
+      </div>
+      <div class="contentcolumn">
+        <ul data-suggest="music-2">
+          <li><a href="https://www.allmusic.com/"><strong>AllMusic Guide</strong></a></li>
+          <li><a href="https://www.knac.com/">KNAC.com</a></li>
+          <li><a href="https://www.metalstorm.net/">Metal Storm</a></li>
+          <li><a href="https://www.metalrules.com/"><strong>Metal Rules</strong></a></li>
+          <li><a href="https://www.metalunderground.com/">Metal Underground</a></li>
+          <li><a href="https://www.metalsucks.com/">Metal Sucks</a></li>
+          <li><a href="https://www.progarchives.com/subgenre.asp?style=19"><strong>Prog Archives</strong></a></li>
+          <li class="spacer-li" aria-hidden="true">&nbsp;</li>
+        </ul>
+      </div>
+    </div>
+    <div id="content-local">
+      <h2>Local</h2>
+      <ul data-suggest="local">
+        <li><a href="https://weather.yahoo.com/us/va/reston/"><strong>YWeather</strong></a></li>
+        <li><a href="https://maps.google.com/maps?q=1328+Sundial+Drive,+Reston,+VA"><strong>Google Maps</strong></a></li>
+        <li><a href="https://www.mapquest.com/">MapQuest</a></li>
+        <li><a href="https://www.thrillist.com/washington-dc">Thrillist DC</a></li>
+        <li><a href="https://reston.patch.com/"><strong>Reston Patch</strong></a></li>
+        <li><a href="https://www.restonian.org/">The Restonian</a></li>
+        <li><a href="https://www.huffpost.com/dc/">Huffpost DC</a></li>
+        <li><a href="https://www.moviefone.com/">Moviefone</a></li>
+      </ul>
+    </div>
+    <div id="content-hardware">
+      <h2>Hardware</h2>
+      <div id="content-hardware-a">
+      <div class="contentcolumn">
+        <ul data-suggest="hw-gadgetry">
+          <li class="captitle">Gadgetry</li>
+          <li><a href="https://www.cnet.com/"><strong>C|NET</strong></a></li>
+          <li><a href="https://www.engadget.com/"><strong>Engadget</strong></a></li>
+          <li><a href="https://www.theverge.com/"><strong>The Verge</strong></a></li>
+          <li><a href="https://lifehacker.com/">Lifehacker</a></li>
+          <li><a href="https://mashable.com/">Mashable</a></li>
+          <li><a href="https://www.wired.com/"><strong>Wired</strong></a></li>
+          <li><a href="https://www.headphone.com/">Headphone.com</a></li>
+          <li><a href="https://www.head-fi.org/">Head-Fi</a></li>
+          <li><a href="https://www.nytimes.com/wirecutter/"><strong>Wirecutter</strong></a></li>
+          <li><a href="https://www.gizmodo.com/">Gizmodo</a></li>
+          <li><a href="https://www.pinterest.com/search/pins/?q=edc"><strong>Pinterest EDC</strong></a></li>
+          <li><a href="https://www.alienware.com/">Alienware</a></li>
+        </ul>
+      </div>
+      <div class="contentcolumn">
+        <ul data-suggest="hw-photography">
+          <li class="captitle">Photography</li>
+          <li><a href="https://www.shadowflood.com/">Shadowflood</a></li>
+          <li><a href="https://www.fstoppers.com/"><strong>FStoppers</strong></a></li>
+          <li><a href="https://www.petapixel.com/"><strong>PetaPixel</strong></a></li>
+          <li><a href="https://www.dpreview.com/"><strong>D. P. Review</strong></a></li>
+          <li><a href="https://www.lensculture.com/"><strong>LensCulture</strong></a></li>
+          <li><a href="https://www.thephoblographer.com/"><strong>The Phoblog...</strong></a></li>
+          <li><a href="https://www.pinterest.com/search/pins/?q=canon"><strong>P'trest Canon</strong></a></li>
+          <li><a href="https://www.pinterest.com/search/pins/?q=concert%20photography"><strong>P'trest Concert photo</strong></a></li>
+          <li><a href="https://leica-camera.com/en-US/blog">Official Leica Blog</a></li>
+        </ul>
+      </div>
+      </div>
+      <div id="content-hardware-b">
+      <div class="contentcolumn">
+        <ul data-suggest="hw-thread">
+          <li class="captitle">Thread</li>
+          <li><a href="http://forums.watchuseek.com/forum.php">Watchuseek</a> | <a href="http://forums.watchuseek.com/f29/">Shop</a></li>
+          <li><a href="https://www.hodinkee.com/">Hodinkee</a></li>
+          <li><a href="https://www.selfedge.com/"><strong>Self Edge</strong></a></li>
+          <li><a href="https://www.ironheart.co.uk/forum/">Iron Heart Forum</a></li>
+          <li><a href="https://www.pinterest.com/search/pins/?q=raw%20denim"><strong>Pinterest Raw D</strong></a></li>
+          <li><a href="https://blueingreensoho.com/">Blue In Greene</a></li>
+          <li><a href="https://www.heddels.com/"><strong>Heddels</strong></a></li>
+          <li><a href="https://www.grailed.com/"><strong>Grailed</strong></a></li>
+          <li><a href="https://www.hypebeast.com/"><strong>Hypebeast</strong></a></li>
+          <li><a href="https://www.superfuture.com/supertalk/forumdisplay.php?f=15"><strong>Superdenim</strong></a></li>
+        </ul>
+      </div>
+      <div class="contentcolumn">
+        <ul data-suggest="hw-badass">
+          <li class="captitle">Badass</li>
+          <li><a href="https://www.uncrate.com/"><strong>Uncrate</strong></a></li>
+          <li><a href="https://www.theawesomer.com/"><strong>The Awesomer</strong></a></li>
+          <li><a href="https://www.jcfonline.com/">JCFOnline</a></li>
+          <li><a href="https://gearpatrol.com/"><strong>Gear Patrol</strong></a></li>
+          <li><a href="https://hiconsumption.com/">Hi Consumption</a></li>
+          <li><a href="https://www.mensjournal.com/">Men's Journal</a></li>
+          <li><a href="https://manofmany.com/"><strong>Man of Many</strong></a></li>
+          <li><a href="https://www.acquiremag.com/">Aquire</a></li>
+          <li><a href="https://www.outsideonline.com/">Outside</a></li>
+          <li><a href="http://gearmoose.com/">Gear Moose</a></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+    <div id="content-guitars">
+      <h2>Guitars</h2>
+      <ul data-suggest="guitars">
+        <li><a href="https://www.premierguitar.com/"><strong>Premier Guitar</strong></a></li>
+        <li><a href="https://www.guitarworld.com/"><strong>Guitar World</strong></a></li>
+        <li><a href="https://www.sweetwater.com/"><strong>Sweetwater</strong></a></li>
+        <li><a href="https://reverb.com/"><strong>Reverb</strong></a></li>
+        <li><a href="https://www.ultimate-guitar.com/"><strong>Ultimate Guitar</strong></a></li>
+        <li><a href="https://www.songsterr.com/"><strong>Songsterr</strong></a></li>
+        <li><a href="https://911tabs.com/">911Tabs</a></li>
+        <li><a href="https://chordify.net/">Chordify</a></li>
+        <li><a href="https://www.andertons.co.uk/">Andertons</a></li>
+        <li><a href="https://www.thomann.de/">Thomann</a></li>
+        <li><a href="https://www.thegearpage.net/">The Gear Page</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="clear:both; height:8px;"></div>
+  <div class="suggest-footnote"><span class="sug-mark">&#10022;</span>marks a link suggested for you — refreshes once a day</div>
+  <div style="clear:both; height:75px;"></div>
+</div>
+
+
+    <script>
+    (function () {
+      var pools = {
+        "intel-1": [
+          ["NPR", "https://www.npr.org/"],
+          ["AP News", "https://apnews.com/"],
+          ["Politico", "https://www.politico.com/"],
+          ["Semafor", "https://www.semafor.com/"],
+          ["The Atlantic", "https://www.theatlantic.com/"],
+          ["ProPublica", "https://www.propublica.org/"]
+        ],
+        "intel-2": [
+          ["Financial Times", "https://www.ft.com/"],
+          ["Barron's", "https://www.barrons.com/"],
+          ["CNBC", "https://www.cnbc.com/"],
+          ["Investor's Business Daily", "https://www.investors.com/"]
+        ],
+        "industry-1": [
+          ["Muzli", "https://muz.li/"],
+          ["Sidebar", "https://sidebar.io/"],
+          ["Product Hunt", "https://www.producthunt.com/"],
+          ["Type Wolf", "https://www.typewolf.com/"],
+          ["Awwwards", "https://www.awwwards.com/"]
+        ],
+        "industry-2": [
+          ["Hacker News", "https://news.ycombinator.com/"],
+          ["CSS-Tricks", "https://css-tricks.com/"],
+          ["Designer News", "https://www.designernews.co/"],
+          ["UX Collective", "https://uxdesign.cc/"],
+          ["Figma Community", "https://www.figma.com/community"]
+        ],
+        "electro-1": [
+          ["Kotaku", "https://kotaku.com/"],
+          ["Eurogamer", "https://www.eurogamer.net/"],
+          ["VG247", "https://www.vg247.com/"],
+          ["PCGamesN", "https://www.pcgamesn.com/"]
+        ],
+        "electro-2": [
+          ["TheGamer", "https://www.thegamer.com/"],
+          ["GamesRadar", "https://www.gamesradar.com/"],
+          ["Nintendo Life", "https://www.nintendolife.com/"],
+          ["Push Square", "https://www.pushsquare.com/"]
+        ],
+        "music-1": [
+          ["Decibel Magazine", "https://www.decibelmagazine.com/"],
+          ["MetalInjection", "https://metalinjection.net/"],
+          ["Consequence", "https://consequence.net/"],
+          ["Stereogum", "https://www.stereogum.com/"]
+        ],
+        "music-2": [
+          ["Noisecreep", "https://noisecreep.com/"],
+          ["Metal Hammer", "https://www.loudersound.com/metal-hammer"],
+          ["Bandcamp", "https://bandcamp.com/"],
+          ["Metal Archives", "https://www.metal-archives.com/"]
+        ],
+        "local": [
+          ["DCist", "https://dcist.com/"],
+          ["ARLnow", "https://www.arlnow.com/"],
+          ["NBC4 Washington", "https://www.nbcwashington.com/"],
+          ["Northern Virginia Magazine", "https://northernvirginiamag.com/"]
+        ],
+        "hw-gadgetry": [
+          ["RTINGS", "https://www.rtings.com/"],
+          ["Tom's Guide", "https://www.tomsguide.com/"],
+          ["Digital Trends", "https://www.digitaltrends.com/"],
+          ["Everyday Carry", "https://everydaycarry.com/"]
+        ],
+        "hw-photography": [
+          ["35mmc", "https://www.35mmc.com/"],
+          ["DIYPhotography", "https://www.diyphotography.net/"],
+          ["Photography Life", "https://photographylife.com/"],
+          ["Ken Rockwell", "https://www.kenrockwell.com/"]
+        ],
+        "hw-thread": [
+          ["Worn & Wound", "https://wornandwound.com/"],
+          ["Fratello Watches", "https://www.fratellowatches.com/"],
+          ["A Blog to Watch", "https://www.ablogtowatch.com/"],
+          ["Rawr Denim", "https://rawrdenim.com/"]
+        ],
+        "hw-badass": [
+          ["Cool Material", "https://coolmaterial.com/"],
+          ["Huckberry", "https://www.huckberry.com/"],
+          ["The Manual", "https://www.themanual.com/"],
+          ["Bespoke Post", "https://www.bespokepost.com/"]
+        ],
+        "guitars": [
+          ["TalkBass", "https://www.talkbass.com/"],
+          ["Chase Bliss Audio", "https://www.chasebliss.com/"],
+          ["JHS Pedals", "https://jhspedals.info/"],
+          ["Fender", "https://www.fender.com/"]
+        ]
+      };
+
+      function seedFromString(str) {
+        var h = 0;
+        for (var i = 0; i < str.length; i++) {
+          h = (h * 31 + str.charCodeAt(i)) >>> 0;
+        }
+        return h;
+      }
+      function mulberry32(a) {
+        return function () {
+          a |= 0; a = (a + 0x6D2B79F5) | 0;
+          var t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      function seededShuffle(arr, seed) {
+        var rng = mulberry32(seed);
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+          var j = Math.floor(rng() * (i + 1));
+          var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+        }
+        return a;
+      }
+
+      var dayKey = new Date().toDateString();
+      var PICKS = 3;
+
+      Object.keys(pools).forEach(function (id) {
+        var list = document.querySelector('ul[data-suggest="' + id + '"]');
+        if (!list) return;
+        var pool = pools[id];
+        var seed = seedFromString(dayKey + "|" + id);
+        var picks = seededShuffle(pool, seed).slice(0, Math.min(PICKS, pool.length));
+        picks.forEach(function (item) {
+          var li = document.createElement("li");
+          li.className = "suggested-link";
+          var mark = document.createElement("span");
+          mark.className = "sug-mark";
+          mark.setAttribute("aria-hidden", "true");
+          mark.innerHTML = "&#10022;";
+          var a = document.createElement("a");
+          a.href = item[1];
+          a.textContent = item[0];
+          a.title = "Suggested for you";
+          li.appendChild(mark);
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      });
+    })();
+    </script>
+</body></html>
