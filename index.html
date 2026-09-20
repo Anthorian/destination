@@ -163,10 +163,14 @@
   .suggested a { color: var(--muted); }
   .suggested a:hover { color: var(--text); }
   .sug-mark {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
     color: var(--muted);
-    font-size: 10px;
-    margin-right: 5px;
+    vertical-align: -2px;
   }
+  .sug-mark svg { width: 100%; height: 100%; }
 
   /* ---------- Search rail ---------- */
   .search {
@@ -376,7 +380,8 @@
           <li><a href="https://www.facebook.com/"><strong>Facebook</strong></a> • <a href="https://www.facebook.com/marketplace">Market</a></li>
           <li><a href="https://instagram.com/"><strong>Instagram</strong></a></li>
           <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
-          <li class="captitle">Seek</li>
+          <li class="captitle">Tooling</li>
+          <li><a href="https://app.bitly.com/BaarbFFf8mn/home"><strong>Bit.ly</strong></a></li>
           <li><a href="https://scout.yahoo.com/"><strong>Yahoo Scout</strong></a></li>
           <li><a href="https://gemini.google.com/"><strong>Gemini</strong></a></li>
           <li><a href="https://www.claude.ai/"><strong>Claude</strong></a></li>
@@ -851,6 +856,17 @@
     return a;
   };
 
+  const SUG_ICON =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M12 17l-2 2l2 2" />' +
+    '<path d="M10 19h9a2 2 0 0 0 1.75 -2.75l-.55 -1" />' +
+    '<path d="M8.536 11l-.732 -2.732l-2.732 .732" />' +
+    '<path d="M7.804 8.268l-4.5 7.794a2 2 0 0 0 1.506 2.89l1.141 .024" />' +
+    '<path d="M15.464 11l2.732 .732l.732 -2.732" />' +
+    '<path d="M18.196 11.732l-4.5 -7.794a2 2 0 0 0 -3.256 -.14l-.591 .976" />' +
+    "</svg>";
+
   for (const list of document.querySelectorAll("ul[data-suggest]")) {
     const pool = pools[list.dataset.suggest];
     if (!pool) continue;
@@ -864,7 +880,7 @@
       const mark = document.createElement("span");
       mark.className = "sug-mark";
       mark.setAttribute("aria-hidden", "true");
-      mark.textContent = "\u2726";
+      mark.innerHTML = SUG_ICON;
       const a = document.createElement("a");
       a.href = href;
       a.textContent = label;
