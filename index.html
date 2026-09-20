@@ -211,6 +211,16 @@
     .hero { height: 150px; }
   }
 
+  /* Tablet-landscape: sections size themselves by how many sub-columns
+     they actually contain, and "dense" packing lets a later, narrower
+     section slide up into any leftover space instead of leaving it blank. */
+  @media (min-width: 700px) {
+    .layout { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: dense; }
+    #intel, #industry, #electro, #music { grid-column: span 2; }
+    #humans, #local, #guitars           { grid-column: span 1; }
+    #hardware                           { grid-column: span 4; }
+  }
+
   /* Desktop: rail + six equal tracks. Sections span tracks, and their
      sub-columns inherit those tracks, so every column on the page lines up. */
   @media (min-width: 1000px) {
@@ -863,6 +873,38 @@
       ul.append(li);
     }
     list.after(ul);
+  }
+})();
+
+/* ---------- Search forms: on Claude's hosting, plain form submission is
+   blocked, and opening the results as a new-tab popup gets blocked in turn
+   by some destinations' own Cross-Origin-Opener-Policy header (Google's
+   search results, notably). Navigating the current tab — the same kind of
+   action a normal link on this page already performs — sidesteps both. On
+   GitHub Pages or a local file, forms submit normally. ---------- */
+(() => {
+  const selfHosted =
+    location.protocol === "file:" ||
+    /(^|\.)github\.io$/.test(location.hostname);
+  if (selfHosted) return;
+
+  for (const form of document.querySelectorAll(".search form")) {
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const params = new URLSearchParams();
+      for (const el of form.elements) {
+        if (!el.name || el.type === "submit" || el.type === "button") continue;
+        params.append(el.name, el.value);
+      }
+      const query = params.toString();
+      const url = form.getAttribute("action") + (query ? `?${query}` : "");
+      const a = document.createElement("a");
+      a.href = url;
+      a.style.display = "none";
+      document.body.append(a);
+      a.click();
+      a.remove();
+    });
   }
 })();
 </script>
