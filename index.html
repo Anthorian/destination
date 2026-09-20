@@ -168,15 +168,17 @@
     margin-right: 5px;
   }
 
-  .footnote {
-    margin: 24px 0 0;
-    color: var(--dim);
-    font-size: 12px;
-  }
-  .footnote .sug-mark { margin-right: 4px; }
-
   /* ---------- Search rail ---------- */
-  .search { display: none; }
+  .search {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    background: var(--panel);
+  }
 
   .search form { display: grid; gap: 6px; }
   .search input {
@@ -204,26 +206,16 @@
   .search button:focus-visible { background: var(--accent-dark); }
   .search button:active { transform: translateY(1px); }
 
-  /* Tablet: search shown as a wrapping row above the lists */
+  /* Tablet: a touch more breathing room */
   @media (min-width: 481px) {
     .hero { height: 150px; }
-    .search {
-      display: grid;
-      grid-column: 1 / -1;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-      padding: 16px;
-      border-radius: var(--radius-md);
-      background: var(--panel);
-    }
   }
 
   /* Desktop: rail + six equal tracks. Sections span tracks, and their
      sub-columns inherit those tracks, so every column on the page lines up. */
   @media (min-width: 1000px) {
     .hero { height: 360px; }
-    .layout { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .layout { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 28px; }
     .links li { padding-block: 4px; }
 
     .search {
@@ -349,7 +341,6 @@
           <li><a href="https://www.itsnicethat.com/"><strong>It's Nice That</strong></a></li>
           <li><a href="https://www.featherbomb.com/">Featherbomb</a></li>
           <li><a href="https://techcrunch.com/"><strong>TechCrunch</strong></a></li>
-          <li><a href="https://recode.net/">Re/Code</a></li>
           <li><a href="https://thecoolhunter.net/">The Cool Hunter</a></li>
           <li><a href="https://www.mashable.com/">Mashable</a></li>
           <li><a href="https://www.thenextweb.com/"><strong>The Next Web</strong></a></li>
@@ -407,7 +398,6 @@
           <li><a href="https://www.ign.com/pc">IGN PC</a></li>
           <li><a href="https://www.ign.com/xbox-one"><strong>IGN XBox</strong></a></li>
           <li><a href="https://www.ign.com/playstation"><strong>IGN PS</strong></a></li>
-          <li><a href="https://www.hothardware.com/">Hot Hardware</a></li>
         </ul>
       </div>
     </section>
@@ -535,8 +525,6 @@
       </div>
     </section>
   </main>
-
-  <footer class="footnote"><span class="sug-mark" aria-hidden="true">&#10022;</span>marks a link suggested for you — refreshes once a day</footer>
 </div>
 
 <script>
@@ -650,119 +638,213 @@
       ["Politico", "https://www.politico.com/"],
       ["Semafor", "https://www.semafor.com/"],
       ["The Atlantic", "https://www.theatlantic.com/"],
-      ["ProPublica", "https://www.propublica.org/"]
+      ["ProPublica", "https://www.propublica.org/"],
+      ["Vox", "https://www.vox.com/"],
+      ["Newsweek", "https://www.newsweek.com/"],
+      ["Slate", "https://slate.com/"],
+      ["The Dispatch", "https://thedispatch.com/"],
+      ["Foreign Policy", "https://foreignpolicy.com/"],
+      ["Mother Jones", "https://www.motherjones.com/"]
     ],
     "intel-2": [
       ["Financial Times", "https://www.ft.com/"],
       ["Barron's", "https://www.barrons.com/"],
       ["CNBC", "https://www.cnbc.com/"],
-      ["Investor's Business Daily", "https://www.investors.com/"]
+      ["Investor's Business Daily", "https://www.investors.com/"],
+      ["Forbes", "https://www.forbes.com/"],
+      ["Fortune", "https://fortune.com/"],
+      ["The Motley Fool", "https://www.fool.com/"],
+      ["Seeking Alpha", "https://seekingalpha.com/"],
+      ["TheStreet", "https://www.thestreet.com/"],
+      ["Kiplinger", "https://www.kiplinger.com/"],
+      ["Morningstar", "https://www.morningstar.com/"],
+      ["Zero Hedge", "https://www.zerohedge.com/"]
     ],
     "industry-1": [
       ["Muzli", "https://muz.li/"],
       ["Sidebar", "https://sidebar.io/"],
       ["Product Hunt", "https://www.producthunt.com/"],
       ["Type Wolf", "https://www.typewolf.com/"],
-      ["Awwwards", "https://www.awwwards.com/"]
+      ["Awwwards", "https://www.awwwards.com/"],
+      ["Codrops", "https://tympanus.net/codrops/"],
+      ["Land-book", "https://land-book.com/"],
+      ["SiteInspire", "https://www.siteinspire.com/"],
+      ["Lapa Ninja", "https://www.lapa.ninja/"],
+      ["Webflow Blog", "https://webflow.com/blog"],
+      ["Canva Design School", "https://www.canva.com/learn/"],
+      ["Envato Tuts+", "https://webdesign.tutsplus.com/"]
     ],
     "industry-2": [
       ["Hacker News", "https://news.ycombinator.com/"],
       ["CSS-Tricks", "https://css-tricks.com/"],
       ["Designer News", "https://www.designernews.co/"],
       ["UX Collective", "https://uxdesign.cc/"],
-      ["Figma Community", "https://www.figma.com/community"]
+      ["Figma Community", "https://www.figma.com/community"],
+      ["freeCodeCamp", "https://www.freecodecamp.org/"],
+      ["Dev.to", "https://dev.to/"],
+      ["Stack Overflow Blog", "https://stackoverflow.blog/"],
+      ["Frontend Focus", "https://frontendfoc.us/"],
+      ["SitePoint", "https://www.sitepoint.com/"],
+      ["MDN Web Docs", "https://developer.mozilla.org/"],
+      ["CodePen", "https://codepen.io/"]
     ],
     "electro-1": [
       ["Kotaku", "https://kotaku.com/"],
       ["Eurogamer", "https://www.eurogamer.net/"],
       ["VG247", "https://www.vg247.com/"],
-      ["PCGamesN", "https://www.pcgamesn.com/"]
+      ["PCGamesN", "https://www.pcgamesn.com/"],
+      ["PC Invasion", "https://www.pcinvasion.com/"],
+      ["Escapist Magazine", "https://www.escapistmagazine.com/"],
+      ["Game Informer", "https://www.gameinformer.com/"],
+      ["Wccftech", "https://wccftech.com/"],
+      ["Shacknews", "https://www.shacknews.com/"],
+      ["GamesIndustry.biz", "https://www.gamesindustry.biz/"],
+      ["Siliconera", "https://www.siliconera.com/"],
+      ["RPGSite", "https://www.rpgsite.net/"]
     ],
     "electro-2": [
       ["TheGamer", "https://www.thegamer.com/"],
       ["GamesRadar", "https://www.gamesradar.com/"],
       ["Nintendo Life", "https://www.nintendolife.com/"],
-      ["Push Square", "https://www.pushsquare.com/"]
+      ["Push Square", "https://www.pushsquare.com/"],
+      ["DualShockers", "https://www.dualshockers.com/"],
+      ["Twinfinite", "https://twinfinite.net/"],
+      ["VGC", "https://www.videogameschronicle.com/"],
+      ["TheSixthAxis", "https://www.thesixthaxis.com/"],
+      ["Automaton", "https://automaton-media.com/en/"],
+      ["Gematsu", "https://www.gematsu.com/"],
+      ["MonsterVine", "https://www.monstervine.com/"],
+      ["Screen Rant Gaming", "https://screenrant.com/tag/gaming/"]
     ],
     "music-1": [
       ["Decibel Magazine", "https://www.decibelmagazine.com/"],
       ["MetalInjection", "https://metalinjection.net/"],
       ["Consequence", "https://consequence.net/"],
-      ["Stereogum", "https://www.stereogum.com/"]
+      ["Stereogum", "https://www.stereogum.com/"],
+      ["Brooklyn Vegan", "https://www.brooklynvegan.com/"],
+      ["Kerrang!", "https://www.kerrang.com/"],
+      ["Ultimate Classic Rock", "https://ultimateclassicrock.com/"],
+      ["NME", "https://www.nme.com/"],
+      ["Spin", "https://www.spin.com/"],
+      ["Paste Magazine", "https://www.pastemagazine.com/"],
+      ["The Quietus", "https://thequietus.com/"],
+      ["Lambgoat", "https://www.lambgoat.com/"]
     ],
     "music-2": [
       ["Noisecreep", "https://noisecreep.com/"],
       ["Metal Hammer", "https://www.loudersound.com/metal-hammer"],
       ["Bandcamp", "https://bandcamp.com/"],
-      ["Metal Archives", "https://www.metal-archives.com/"]
+      ["Metal Archives", "https://www.metal-archives.com/"],
+      ["Angry Metal Guy", "https://www.angrymetalguy.com/"],
+      ["No Clean Singing", "https://www.nocleansinging.com/"],
+      ["Two Guys Metal Reviews", "https://twoguysmetalreviews.com/"],
+      ["The Prog Report", "https://progreport.com/"],
+      ["DPRP", "https://www.dprp.net/"],
+      ["Sea of Tranquility", "http://www.seaoftranquility.org/"],
+      ["Invisible Oranges", "https://www.invisibleoranges.com/"],
+      ["Toilet ov Hell", "https://www.toiletovhell.com/"]
     ],
     "local": [
       ["DCist", "https://dcist.com/"],
       ["ARLnow", "https://www.arlnow.com/"],
       ["NBC4 Washington", "https://www.nbcwashington.com/"],
-      ["Northern Virginia Magazine", "https://northernvirginiamag.com/"]
+      ["Northern Virginia Magazine", "https://northernvirginiamag.com/"],
+      ["WJLA ABC7", "https://wjla.com/"],
+      ["FOX5 DC", "https://www.fox5dc.com/"],
+      ["Washingtonian", "https://www.washingtonian.com/"],
+      ["Washington City Paper", "https://washingtoncitypaper.com/"],
+      ["PoPville", "https://www.popville.com/"],
+      ["Greater Greater Washington", "https://ggwash.org/"],
+      ["Reston Association", "https://www.reston.org/"],
+      ["InsideNova", "https://www.insidenova.com/"]
     ],
     "hw-gadgetry": [
       ["RTINGS", "https://www.rtings.com/"],
       ["Tom's Guide", "https://www.tomsguide.com/"],
       ["Digital Trends", "https://www.digitaltrends.com/"],
-      ["Everyday Carry", "https://everydaycarry.com/"]
+      ["Everyday Carry", "https://everydaycarry.com/"],
+      ["Notebookcheck", "https://www.notebookcheck.net/"],
+      ["SlashGear", "https://www.slashgear.com/"],
+      ["Android Authority", "https://www.androidauthority.com/"],
+      ["TechRadar", "https://www.techradar.com/"],
+      ["Laptop Mag", "https://www.laptopmag.com/"],
+      ["GSMArena", "https://www.gsmarena.com/"],
+      ["iMore", "https://www.imore.com/"],
+      ["9to5Toys", "https://9to5toys.com/"]
     ],
     "hw-photography": [
       ["35mmc", "https://www.35mmc.com/"],
       ["DIYPhotography", "https://www.diyphotography.net/"],
       ["Photography Life", "https://photographylife.com/"],
-      ["Ken Rockwell", "https://www.kenrockwell.com/"]
+      ["Ken Rockwell", "https://www.kenrockwell.com/"],
+      ["Digital Photography School", "https://digital-photography-school.com/"],
+      ["PhotoRumors", "https://photorumors.com/"],
+      ["Imaging Resource", "https://www.imaging-resource.com/"],
+      ["Casual Photophile", "https://casualphotophile.com/"],
+      ["EMULSIVE", "https://www.emulsive.org/"],
+      ["Japan Camera Hunter", "https://www.japancamerahunter.com/"],
+      ["Street Hunters", "https://streethunters.net/"],
+      ["Photofocus", "https://photofocus.com/"]
     ],
     "hw-thread": [
       ["Worn & Wound", "https://wornandwound.com/"],
       ["Fratello Watches", "https://www.fratellowatches.com/"],
       ["A Blog to Watch", "https://www.ablogtowatch.com/"],
-      ["Rawr Denim", "https://rawrdenim.com/"]
+      ["Rawr Denim", "https://rawrdenim.com/"],
+      ["Monochrome Watches", "https://monochrome-watches.com/"],
+      ["Quill & Pad", "https://quillandpad.com/"],
+      ["Denimhunters", "https://denimhunters.com/"],
+      ["Long John", "https://long-john.nl/"],
+      ["Style Forum", "https://www.styleforum.net/"],
+      ["Put This On", "https://putthison.com/"],
+      ["Highsnobiety", "https://www.highsnobiety.com/"],
+      ["Selvedge Yard", "https://theselvedgeyard.com/"]
     ],
     "hw-badass": [
       ["Cool Material", "https://coolmaterial.com/"],
       ["Huckberry", "https://www.huckberry.com/"],
       ["The Manual", "https://www.themanual.com/"],
-      ["Bespoke Post", "https://www.bespokepost.com/"]
+      ["Bespoke Post", "https://www.bespokepost.com/"],
+      ["GQ", "https://www.gq.com/"],
+      ["Esquire", "https://www.esquire.com/"],
+      ["AskMen", "https://www.askmen.com/"],
+      ["Primer Magazine", "https://www.primermagazine.com/"],
+      ["Dappered", "https://dappered.com/"],
+      ["Effortless Gent", "https://effortlessgent.com/"],
+      ["Iron & Air", "https://ironandair.com/"],
+      ["Popular Mechanics", "https://www.popularmechanics.com/"]
     ],
     "guitars": [
       ["TalkBass", "https://www.talkbass.com/"],
       ["Chase Bliss Audio", "https://www.chasebliss.com/"],
       ["JHS Pedals", "https://jhspedals.info/"],
-      ["Fender", "https://www.fender.com/"]
+      ["Fender", "https://www.fender.com/"],
+      ["Gibson", "https://www.gibson.com/"],
+      ["Guitar.com", "https://guitar.com/"],
+      ["No Treble", "https://www.notreble.com/"],
+      ["D'Addario", "https://www.daddario.com/"],
+      ["Seymour Duncan", "https://www.seymourduncan.com/"],
+      ["Guitar Center", "https://www.guitarcenter.com/"],
+      ["Musician's Friend", "https://www.musiciansfriend.com/"],
+      ["Sound On Sound", "https://www.soundonsound.com/"]
     ]
   };
 
   const PICKS = 3;
 
-  const seedFrom = str => {
-    let h = 0;
-    for (const ch of str) h = (Math.imul(h, 31) + ch.charCodeAt(0)) >>> 0;
-    return h;
-  };
-  const mulberry32 = a => () => {
-    a = (a + 0x6D2B79F5) | 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-  const seededShuffle = (arr, seed) => {
-    const rng = mulberry32(seed);
+  const shuffle = arr => {
     const a = [...arr];
     for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1));
+      const j = Math.floor(Math.random() * (i + 1));
       [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
   };
 
-  const dayKey = new Date().toDateString();
-
   for (const list of document.querySelectorAll("ul[data-suggest]")) {
     const pool = pools[list.dataset.suggest];
     if (!pool) continue;
-    const picks = seededShuffle(pool, seedFrom(`${dayKey}|${list.dataset.suggest}`)).slice(0, PICKS);
+    const picks = shuffle(pool).slice(0, PICKS);
 
     const ul = document.createElement("ul");
     ul.className = "links suggested";
