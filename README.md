@@ -1,49 +1,71 @@
-# featherbomb
+One humble file of
+markup holds it all, no build
+to run, no install.
 
-A personal browser start page — one self-contained `index.html` file, no build step,
-no dependencies to install. Open it locally or serve it from GitHub Pages and it just
-works.
+Just open it in
+any browser's frame, or let
+it live where pages claim.
 
-**Live site:** https://anthorian.github.io/destination/
+A little plot at
+anthorian's door, search boxes
+wait in rows of four.
 
-## What's on the page
+For Google, Maps, and
+Amazon stand by, for eBay,
+YouTube, Craigslist — try.
 
-- **Search rail** — quick-search boxes for Google, Google Maps, eBay, Amazon,
-  YouTube, and Craigslist. Each submits a normal form (no JavaScript required for
-  search to work) and opens results in the same tab.
-- **Link sections** — Intel (news), Industry (design/tech), Humans (mail, social,
-  AI tools), Electrotainment (gaming), Music, Local (Reston/DC), Hardware
-  (Gadgetry, Photography, Thread, Badass), and Guitars — around 160 hand-picked
-  links in total.
-- **Suggested links** — every list also shows three grey, ✦-marked links drawn
-  from a curated pool of about a dozen options per section. The pool reshuffles
-  on every page load, so the mix of "suggested" links is different each time you
-  open the page.
-- **Animated hero** — a full-bleed color gradient with a small canvas-based
-  particle system drifting across it. Colors and layout are randomized per load;
-  the motion is a damped random walk, so it never repeats or visibly loops. It
-  holds still automatically for anyone with "reduce motion" turned on.
+They send you off in
+the selfsame tab, no window
+spawned, no second grab.
 
-## Tech notes
+A hero glows in
+colors drifting slow, each visit
+brings a gradient's flow.
 
-- Single HTML file (~35 KB): all CSS and JavaScript are inline, no external
-  scripts except Google Fonts.
-- Layout uses CSS Grid with `subgrid`, so sibling columns always line up even
-  when the lists inside them are different lengths.
-- No frameworks, no build tools — just modern HTML/CSS/JS.
+A quiet drift of
+particles that stray and never
+trace the path they'd stray.
 
-## Updating the page
+Then Intel speaks of
+nations near and far, Industry
+keeps watch on the star.
 
-This repo has no CI/build step. To change anything (add a link, edit the
-suggestion pools, tweak styling):
+The Humans corner
+minds the mail and chat, and
+Tooling follows that.
 
-1. Edit `index.html` directly (either locally, or with GitHub's in-browser
-   editor — click the pencil icon on the file).
-2. Commit the change to `main`.
-3. GitHub Pages rebuilds automatically, usually within a minute or two.
+Then Electrotainment
+rings its gaming bell, Music
+plays a verse so well.
 
-## Hosting
+Then Local keeps its
+eye on Reston's ground, Hardware
+splits, neatly bound.
 
-Pages is configured to deploy from the `main` branch, root folder
-(Settings → Pages). No separate build is needed since `index.html` is served
-as-is.
+Then Guitars strum their
+tabs and gear anew, some hundred
+sixty links are true.
+
+And scattered through, a
+small recycled sign, points out
+the suggested line.
+
+Twelve choices resting
+in a waiting pool, fresh each
+time you load the tool.
+
+No framework here, no
+build step to be found, just
+native code unbound.
+
+The columns lock in
+step through subgrid's art, so
+rows won't fall apart.
+
+And should you wish to
+change a word or link, then
+open, stop to think,
+
+Commit the change to
+main, and wait a spell, the
+Pages build shall swell.
