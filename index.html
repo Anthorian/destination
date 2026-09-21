@@ -120,13 +120,7 @@
   }
   .block h2 { grid-column: 1 / -1; }
 
-  /* Each column = baked list + suggested list, sharing rows with its
-     neighbours so suggestion lists always start on the same line. */
   .col {
-    display: grid;
-    grid-row: span 2;
-    grid-template-rows: subgrid;
-    align-content: start;
     min-width: 0;
   }
   #humans .col, #local .col, #guitars .col { grid-column: 1 / -1; }
@@ -159,7 +153,6 @@
     text-transform: uppercase;
   }
 
-  .suggested { margin-top: 6px; }
   .suggested a { color: var(--muted); }
   .suggested a:hover { color: var(--text); }
   .sug-mark {
