@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Destination</title>
 <meta name="theme-color" content="#EC008C">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
+<script>
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%23ff2d14'/><stop offset='100%25' stop-color='%23ffd200'/></linearGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23g)'/></svg>">
 <base target="_top">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +25,7 @@
     --text: #FFFFFF;
     --muted: #9AA0A8;
     --dim: #6B7078;
+    --border: rgba(255, 255, 255, .08);
     --accent: #EC008C;
     --accent-dark: #5C0140;
     --radius-sm: 6px;
@@ -27,6 +34,37 @@
     --gutter: 10px;
     --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-head: "Roboto Slab", Rockwell, Georgia, serif;
+  }
+
+  /* Follows the OS setting until the visitor picks explicitly with the toggle. */
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      color-scheme: light;
+      --bg: #F3F4F6;
+      --panel: #FFFFFF;
+      --text: #14181D;
+      --muted: #5B6169;
+      --dim: #9198A1;
+      --border: rgba(20, 24, 29, .1);
+    }
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #F3F4F6;
+    --panel: #FFFFFF;
+    --text: #14181D;
+    --muted: #5B6169;
+    --dim: #9198A1;
+    --border: rgba(20, 24, 29, .1);
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0A0E13;
+    --panel: #232A31;
+    --text: #FFFFFF;
+    --muted: #9AA0A8;
+    --dim: #6B7078;
+    --border: rgba(255, 255, 255, .08);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -175,6 +213,7 @@
     padding: 16px;
     border-radius: var(--radius-md);
     background: var(--panel);
+    border: 1px solid var(--border);
   }
 
   .search form { display: grid; gap: 6px; }
@@ -202,6 +241,44 @@
   .search button:hover,
   .search button:focus-visible { background: var(--accent-dark); }
   .search button:active { transform: translateY(1px); }
+
+  /* ---------- Theme toggle ---------- */
+  .theme-toggle {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .theme-toggle button {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color .3s ease, border-color .3s ease;
+  }
+  .theme-toggle button:hover,
+  .theme-toggle button:focus-visible { color: var(--text); border-color: var(--muted); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  .theme-toggle .moon { display: none; }
+  :root[data-theme="light"] .theme-toggle .sun,
+  :root:not([data-theme]) .theme-toggle .sun { display: none; }
+  :root[data-theme="light"] .theme-toggle .moon,
+  :root:not([data-theme]) .theme-toggle .moon { display: block; }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) .theme-toggle .sun { display: none; }
+    :root:not([data-theme]) .theme-toggle .moon { display: block; }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .theme-toggle .sun { display: block; }
+    :root:not([data-theme]) .theme-toggle .moon { display: none; }
+  }
+  :root[data-theme="dark"] .theme-toggle .sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .moon { display: none; }
 
   /* Tablet: a touch more breathing room */
   @media (min-width: 481px) {
@@ -533,10 +610,40 @@
       </div>
     </section>
   </main>
+
+  <footer class="theme-toggle">
+    <button type="button" id="theme-toggle" aria-label="Toggle light and dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 3v1M12 20v1M4.2 4.2l.7.7M19.1 19.1l.7.7M3 12h1M20 12h1M4.2 19.8l.7-.7M19.1 4.9l.7-.7"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>
+      </svg>
+    </button>
+  </footer>
 </div>
 
 <script>
 "use strict";
+
+/* ---------- Theme toggle: OS by default, explicit choice overrides ---------- */
+(() => {
+  const root = document.documentElement;
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+
+  const systemPrefersLight = matchMedia("(prefers-color-scheme: light)");
+
+  const effectiveTheme = () =>
+    root.getAttribute("data-theme") || (systemPrefersLight.matches ? "light" : "dark");
+
+  btn.addEventListener("click", () => {
+    const next = effectiveTheme() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+})();
 
 /* ---------- Hero: randomized palette + non-looping particle drift ---------- */
 (() => {
