@@ -193,6 +193,8 @@
 
   .suggested a { color: var(--dim); }
   .suggested a:hover { color: var(--text); }
+  @keyframes sug-fade { from { opacity: 0; } to { opacity: 1; } }
+  .suggested.sug-fade { animation: sug-fade .25s ease; }
   .sug-mark {
     display: inline-block;
     width: 14px;
@@ -204,9 +206,14 @@
   .sug-mark svg { width: 100%; height: 100%; }
 
   /* ---------- Search rail ---------- */
+  .rail {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
   .search {
     display: grid;
-    grid-column: 1 / -1;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
     margin-top: 24px;
@@ -244,11 +251,10 @@
 
   /* ---------- Utility rail (sits under the search box) ---------- */
   .utility {
-    grid-column: 1 / -1;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    margin-top: 12px;
   }
   .util-btn {
     display: grid;
@@ -312,16 +318,13 @@
     .layout { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 28px; }
     .links li { padding-block: 4px; }
 
-    .search {
+    .rail {
       grid-column: 1;
       grid-row: 1 / span 3;
+    }
+    .search {
       grid-template-columns: 1fr;
       gap: 16px;
-    }
-    .utility {
-      grid-column: 1;
-      grid-row: 4;
-      margin-top: 16px;
     }
 
     #intel    { grid-area: 1 / 2 / auto / span 2; }
@@ -344,6 +347,7 @@
   <h1 class="visually-hidden">featherbomb</h1>
 
   <main class="layout">
+    <div class="rail">
     <aside class="search" aria-label="Search">
       <form action="https://www.google.com/search" method="get" role="search">
         <input type="search" name="q" placeholder="Google" aria-label="Search Google" autocomplete="off">
@@ -394,6 +398,7 @@
         </svg>
       </button>
     </aside>
+    </div>
 
     <section class="block" id="intel" aria-labelledby="intel-h">
       <h2 id="intel-h">Intel</h2>
@@ -1011,7 +1016,7 @@
       const picks = shuffle(pool).slice(0, PICKS);
 
       const ul = document.createElement("ul");
-      ul.className = "links suggested";
+      ul.className = "links suggested sug-fade";
       ul.setAttribute("aria-label", "Suggested links");
       for (const [label, href] of picks) {
         const li = document.createElement("li");
