@@ -194,7 +194,7 @@
   .suggested a { color: var(--dim); }
   .suggested a:hover { color: var(--text); }
   @keyframes sug-fade { from { opacity: 0; } to { opacity: 1; } }
-  .suggested.sug-fade { animation: sug-fade .25s ease; }
+  .sug-item { animation: sug-fade .375s ease both; }
   .sug-mark {
     display: inline-block;
     width: 14px;
@@ -1007,16 +1007,18 @@
 
   const render = () => {
     for (const old of document.querySelectorAll("ul.suggested")) old.remove();
+    const newItems = [];
     for (const list of document.querySelectorAll("ul[data-suggest]")) {
       const pool = pools[list.dataset.suggest];
       if (!pool) continue;
       const picks = shuffle(pool).slice(0, PICKS);
 
       const ul = document.createElement("ul");
-      ul.className = "links suggested sug-fade";
+      ul.className = "links suggested";
       ul.setAttribute("aria-label", "Suggested links");
       for (const [label, href] of picks) {
         const li = document.createElement("li");
+        li.className = "sug-item";
         const mark = document.createElement("span");
         mark.className = "sug-mark";
         mark.setAttribute("aria-hidden", "true");
@@ -1027,9 +1029,20 @@
         a.title = "Suggested for you";
         li.append(mark, a);
         ul.append(li);
+        newItems.push(li);
       }
       list.after(ul);
     }
+
+    // Stagger by actual on-screen position (top to bottom, left to right)
+    // rather than DOM order, since desktop reassigns sections into a grid
+    // that doesn't always match source order.
+    const positioned = newItems.map(li => {
+      const r = li.getBoundingClientRect();
+      return { li, top: r.top, left: r.left };
+    });
+    positioned.sort((a, b) => (Math.round(a.top / 20) - Math.round(b.top / 20)) || (a.left - b.left));
+    positioned.forEach(({ li }, i) => { li.style.animationDelay = `${i * 12}ms`; });
   };
 
   render();
