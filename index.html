@@ -242,13 +242,15 @@
   .search button:focus-visible { background: var(--accent-dark); }
   .search button:active { transform: translateY(1px); }
 
-  /* ---------- Theme toggle ---------- */
-  .theme-toggle {
+  /* ---------- Utility rail (sits under the search box) ---------- */
+  .utility {
+    grid-column: 1 / -1;
     display: flex;
-    justify-content: center;
-    margin-top: 32px;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
   }
-  .theme-toggle button {
+  .util-btn {
     display: grid;
     place-items: center;
     width: 30px;
@@ -261,24 +263,32 @@
     cursor: pointer;
     transition: color .3s ease, border-color .3s ease;
   }
-  .theme-toggle button:hover,
-  .theme-toggle button:focus-visible { color: var(--text); border-color: var(--muted); }
-  .theme-toggle svg { width: 16px; height: 16px; }
-  .theme-toggle .moon { display: none; }
-  :root[data-theme="light"] .theme-toggle .sun,
-  :root:not([data-theme]) .theme-toggle .sun { display: none; }
-  :root[data-theme="light"] .theme-toggle .moon,
-  :root:not([data-theme]) .theme-toggle .moon { display: block; }
+  .util-btn:hover,
+  .util-btn:focus-visible { color: var(--text); border-color: var(--muted); }
+  .util-btn svg { width: 16px; height: 16px; }
+  .util-btn.spin svg { animation: spin-once .5s ease; }
+  @keyframes spin-once { to { transform: rotate(360deg); } }
+  .clock {
+    font: 12px var(--font-body);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .util-btn .moon { display: none; }
+  :root[data-theme="light"] .util-btn .sun,
+  :root:not([data-theme]) .util-btn .sun { display: none; }
+  :root[data-theme="light"] .util-btn .moon,
+  :root:not([data-theme]) .util-btn .moon { display: block; }
   @media (prefers-color-scheme: light) {
-    :root:not([data-theme]) .theme-toggle .sun { display: none; }
-    :root:not([data-theme]) .theme-toggle .moon { display: block; }
+    :root:not([data-theme]) .util-btn .sun { display: none; }
+    :root:not([data-theme]) .util-btn .moon { display: block; }
   }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) .theme-toggle .sun { display: block; }
-    :root:not([data-theme]) .theme-toggle .moon { display: none; }
+    :root:not([data-theme]) .util-btn .sun { display: block; }
+    :root:not([data-theme]) .util-btn .moon { display: none; }
   }
-  :root[data-theme="dark"] .theme-toggle .sun { display: block; }
-  :root[data-theme="dark"] .theme-toggle .moon { display: none; }
+  :root[data-theme="dark"] .util-btn .sun { display: block; }
+  :root[data-theme="dark"] .util-btn .moon { display: none; }
+
 
   /* Tablet: a touch more breathing room */
   @media (min-width: 481px) {
@@ -307,6 +317,11 @@
       grid-row: 1 / span 3;
       grid-template-columns: 1fr;
       gap: 16px;
+    }
+    .utility {
+      grid-column: 1;
+      grid-row: 4;
+      margin-top: 16px;
     }
 
     #intel    { grid-area: 1 / 2 / auto / span 2; }
@@ -355,6 +370,29 @@
         <input type="search" name="query" placeholder="Craigslist" aria-label="Search Craigslist" autocomplete="off">
         <button type="submit">Go</button>
       </form>
+    </aside>
+
+    <aside class="utility" aria-label="Utilities">
+      <span class="clock" id="clock" aria-hidden="true"></span>
+      <button type="button" id="theme-toggle" class="util-btn" aria-label="Toggle light and dark mode">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 3v1M12 20v1M4.2 4.2l.7.7M19.1 19.1l.7.7M3 12h1M20 12h1M4.2 19.8l.7-.7M19.1 4.9l.7-.7"/>
+        </svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>
+        </svg>
+      </button>
+      <button type="button" id="reshuffle" class="util-btn" aria-label="Refresh suggested links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 17l-2 2l2 2" />
+          <path d="M10 19h9a2 2 0 0 0 1.75 -2.75l-.55 -1" />
+          <path d="M8.536 11l-.732 -2.732l-2.732 .732" />
+          <path d="M7.804 8.268l-4.5 7.794a2 2 0 0 0 1.506 2.89l1.141 .024" />
+          <path d="M15.464 11l2.732 .732l.732 -2.732" />
+          <path d="M18.196 11.732l-4.5 -7.794a2 2 0 0 0 -3.256 -.14l-.591 .976" />
+        </svg>
+      </button>
     </aside>
 
     <section class="block" id="intel" aria-labelledby="intel-h">
@@ -610,18 +648,6 @@
       </div>
     </section>
   </main>
-
-  <footer class="theme-toggle">
-    <button type="button" id="theme-toggle" aria-label="Toggle light and dark mode">
-      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4"/>
-        <path d="M12 3v1M12 20v1M4.2 4.2l.7.7M19.1 19.1l.7.7M3 12h1M20 12h1M4.2 19.8l.7-.7M19.1 4.9l.7-.7"/>
-      </svg>
-      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>
-      </svg>
-    </button>
-  </footer>
 </div>
 
 <script>
@@ -643,6 +669,16 @@
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch (e) {}
   });
+})();
+
+/* ---------- Clock ---------- */
+(() => {
+  const el = document.getElementById("clock");
+  if (!el) return;
+  const fmt = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
+  const tick = () => { el.textContent = fmt.format(new Date()); };
+  tick();
+  setInterval(tick, 15000);
 })();
 
 /* ---------- Hero: randomized palette + non-looping particle drift ---------- */
@@ -967,28 +1003,42 @@
     '<path d="M18.196 11.732l-4.5 -7.794a2 2 0 0 0 -3.256 -.14l-.591 .976" />' +
     "</svg>";
 
-  for (const list of document.querySelectorAll("ul[data-suggest]")) {
-    const pool = pools[list.dataset.suggest];
-    if (!pool) continue;
-    const picks = shuffle(pool).slice(0, PICKS);
+  const render = () => {
+    for (const old of document.querySelectorAll("ul.suggested")) old.remove();
+    for (const list of document.querySelectorAll("ul[data-suggest]")) {
+      const pool = pools[list.dataset.suggest];
+      if (!pool) continue;
+      const picks = shuffle(pool).slice(0, PICKS);
 
-    const ul = document.createElement("ul");
-    ul.className = "links suggested";
-    ul.setAttribute("aria-label", "Suggested links");
-    for (const [label, href] of picks) {
-      const li = document.createElement("li");
-      const mark = document.createElement("span");
-      mark.className = "sug-mark";
-      mark.setAttribute("aria-hidden", "true");
-      mark.innerHTML = SUG_ICON;
-      const a = document.createElement("a");
-      a.href = href;
-      a.textContent = label;
-      a.title = "Suggested for you";
-      li.append(mark, a);
-      ul.append(li);
+      const ul = document.createElement("ul");
+      ul.className = "links suggested";
+      ul.setAttribute("aria-label", "Suggested links");
+      for (const [label, href] of picks) {
+        const li = document.createElement("li");
+        const mark = document.createElement("span");
+        mark.className = "sug-mark";
+        mark.setAttribute("aria-hidden", "true");
+        mark.innerHTML = SUG_ICON;
+        const a = document.createElement("a");
+        a.href = href;
+        a.textContent = label;
+        a.title = "Suggested for you";
+        li.append(mark, a);
+        ul.append(li);
+      }
+      list.after(ul);
     }
-    list.after(ul);
+  };
+
+  render();
+
+  const reshuffleBtn = document.getElementById("reshuffle");
+  if (reshuffleBtn) {
+    reshuffleBtn.addEventListener("click", () => {
+      render();
+      reshuffleBtn.classList.add("spin");
+      setTimeout(() => reshuffleBtn.classList.remove("spin"), 500);
+    });
   }
 })();
 
