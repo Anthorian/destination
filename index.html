@@ -698,9 +698,12 @@
   setInterval(tick, 15000);
 })();
 
-/* ---------- Hero: undulating camo, one pattern chosen at random per load.
-   Pool spans every palette/treatment explored: 7 palettes at normal
-   resolution, plus 3 in a blurred render and 3 rendered 8-bit-chunky. ---------- */
+/* ---------- Hero: undulating camo. One palette chosen at random per load,
+   rendered at a medium resolution with smoothing turned OFF — crisp
+   blocky pixel edges, but the underlying grid is fine enough that blobs
+   still connect and merge into organic, camo-like shapes rather than
+   reading as flat rectangles. A random spatial and time offset is baked
+   in per load so even the same palette never starts from the same layout. ---------- */
 (() => {
   const canvas = document.getElementById("heroCanvas");
   if (!canvas) return;
@@ -712,43 +715,31 @@
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
   };
 
-  const noise = (x, y, t) =>
-    Math.sin(x * 2.1 + y * 1.3 + t * 0.15)
-    + 0.8 * Math.sin(x * -1.7 + y * 2.4 - t * 0.12)
-    + 0.6 * Math.sin(x * 3.3 - y * 0.7 + t * 0.2)
-    + 0.5 * Math.sin(x * -0.9 + y * -2.8 + t * 0.1);
-
-  const PALETTES = {
-    butterPlum: ["#F4D35E", "#6A4C93", "#E07A5F", "#3D9970"],
-    mochaMousse: ["#A6785F", "#F1E4D0", "#C1440E", "#8A9A5B"],
-    digitalLavender: ["#D8CCF1", "#5762D5", "#FF6B6B", "#2EC4B6"],
-    acidPop: ["#FFD400", "#FF3EA5", "#00C2FF", "#101010"],
-    terracottaClay: ["#D97B4F", "#EDE6D6", "#6B8E5A", "#C9A227"],
-    cyberCoral: ["#114B5F", "#F45B69", "#FF9F1C", "#E4FDE1"],
-    sherbetPastel: ["#FCEADE", "#A0C4FF", "#B9FBC0", "#FFC6FF"]
-  };
-
-  const POOL = [
-    ...Object.keys(PALETTES).map(k => ({ type: "normal", colors: PALETTES[k] })),
-    { type: "blurry", colors: PALETTES.butterPlum },
-    { type: "blurry", colors: PALETTES.acidPop },
-    { type: "blurry", colors: PALETTES.cyberCoral },
-    { type: "8bit", colors: PALETTES.butterPlum },
-    { type: "8bit", colors: PALETTES.acidPop },
-    { type: "8bit", colors: PALETTES.cyberCoral }
+  const PALETTES = [
+    ["#F4D35E", "#6A4C93", "#E07A5F", "#3D9970"],
+    ["#A6785F", "#F1E4D0", "#C1440E", "#8A9A5B"],
+    ["#D8CCF1", "#5762D5", "#FF6B6B", "#2EC4B6"],
+    ["#FFD400", "#FF3EA5", "#00C2FF", "#101010"],
+    ["#D97B4F", "#EDE6D6", "#6B8E5A", "#C9A227"],
+    ["#114B5F", "#F45B69", "#FF9F1C", "#E4FDE1"],
+    ["#FCEADE", "#A0C4FF", "#B9FBC0", "#FFC6FF"]
   ];
 
-  const GRID = {
-    normal: { w: 96, h: 22 },
-    blurry: { w: 220, h: 52 },
-    "8bit": { w: 22, h: 6 }
-  };
-
-  const pick = POOL[Math.floor(Math.random() * POOL.length)];
-  const grid = GRID[pick.type];
-  const colors = pick.colors.map(hexToRgb);
+  const colors = PALETTES[Math.floor(Math.random() * PALETTES.length)].map(hexToRgb);
   const bands = [0.42, 0.68, 0.87, 1.01];
 
+  const rand = (min, max) => Math.random() * (max - min) + min;
+  const offX = rand(0, 100);
+  const offY = rand(0, 100);
+  const offT = rand(0, 100);
+
+  const noise = (x, y, t) =>
+    Math.sin((x + offX) * 2.1 + (y + offY) * 1.3 + (t + offT) * 0.15)
+    + 0.8 * Math.sin((x + offX) * -1.7 + (y + offY) * 2.4 - (t + offT) * 0.12)
+    + 0.6 * Math.sin((x + offX) * 3.3 - (y + offY) * 0.7 + (t + offT) * 0.2)
+    + 0.5 * Math.sin((x + offX) * -0.9 + (y + offY) * -2.8 + (t + offT) * 0.1);
+
+  const grid = { w: 96, h: 22 };
   const buf = document.createElement("canvas");
   buf.width = grid.w; buf.height = grid.h;
   const bctx = buf.getContext("2d");
@@ -779,28 +770,15 @@
     w = canvas.clientWidth; h = canvas.clientHeight;
     canvas.width = Math.max(1, Math.round(w * dpr));
     canvas.height = Math.max(1, Math.round(h * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   };
   new ResizeObserver(resize).observe(canvas);
   resize();
 
   const draw = t => {
     renderBuffer(t);
-    if (pick.type === "8bit") {
-      ctx.imageSmoothingEnabled = false;
-      ctx.filter = "none";
-      ctx.drawImage(buf, 0, 0, grid.w, grid.h, 0, 0, canvas.width, canvas.height);
-    } else if (pick.type === "blurry") {
-      ctx.imageSmoothingEnabled = true;
-      ctx.filter = "none";
-      ctx.drawImage(buf, 0, 0, grid.w, grid.h, 0, 0, canvas.width, canvas.height);
-      ctx.filter = "blur(10px)";
-      ctx.drawImage(buf, 0, 0, grid.w, grid.h, 0, 0, canvas.width, canvas.height);
-      ctx.filter = "none";
-    } else {
-      ctx.imageSmoothingEnabled = true;
-      ctx.filter = "none";
-      ctx.drawImage(buf, 0, 0, grid.w, grid.h, 0, 0, canvas.width, canvas.height);
-    }
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(buf, 0, 0, grid.w, grid.h, 0, 0, w, h);
   };
 
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
@@ -821,6 +799,7 @@
   reduceMotion.addEventListener("change", sync);
   sync();
 })();
+
 
 /* ---------- Suggested links: rotate once a day ---------- */
 (() => {
