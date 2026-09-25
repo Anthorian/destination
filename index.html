@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Destination</title>
-<meta name="theme-color" content="#EC008C">
+<meta name="theme-color" content="#F2A93B" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#A85F0E" media="(prefers-color-scheme: light)">
 <meta name="color-scheme" content="dark light">
 <script>
   try {
@@ -16,7 +17,8 @@
 <base target="_top">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Slab:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Slab:wght@400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Slab:wght@400&display=swap"></noscript>
 <style>
   :root {
     color-scheme: dark;
@@ -27,9 +29,10 @@
     --muted: #9AA0A8;
     --dim: #6B7078;
     --border: rgba(255, 255, 255, .09);
-    --accent: #EC008C;
-    --accent-dark: #5C0140;
-    --accent-soft: rgba(236, 0, 140, .14);
+    --accent: #F2A93B;
+    --accent-dark: #C98A2E;
+    --accent-ink: #16181C;
+    --accent-soft: rgba(242, 169, 59, .14);
     --shadow-card: 0 1px 1px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.28);
     --radius-sm: 8px;
     --radius-md: 14px;
@@ -56,7 +59,10 @@
       --muted: #6E7580;
       --dim: #9AA0A8;
       --border: rgba(20, 24, 29, .08);
-      --accent-soft: rgba(236, 0, 140, .08);
+      --accent: #A85F0E;
+      --accent-dark: #7A470A;
+      --accent-ink: #FFFFFF;
+      --accent-soft: rgba(168, 95, 14, .1);
       --shadow-card: 0 1px 2px rgba(20,24,29,.04), 0 8px 24px rgba(20,24,29,.06);
     }
   }
@@ -69,7 +75,10 @@
     --muted: #6E7580;
     --dim: #9AA0A8;
     --border: rgba(20, 24, 29, .08);
-    --accent-soft: rgba(236, 0, 140, .08);
+    --accent: #A85F0E;
+    --accent-dark: #7A470A;
+    --accent-ink: #FFFFFF;
+    --accent-soft: rgba(168, 95, 14, .1);
     --shadow-card: 0 1px 2px rgba(20,24,29,.04), 0 8px 24px rgba(20,24,29,.06);
   }
   :root[data-theme="dark"] {
@@ -81,7 +90,10 @@
     --muted: #9AA0A8;
     --dim: #6B7078;
     --border: rgba(255, 255, 255, .09);
-    --accent-soft: rgba(236, 0, 140, .14);
+    --accent: #F2A93B;
+    --accent-dark: #C98A2E;
+    --accent-ink: #16181C;
+    --accent-soft: rgba(242, 169, 59, .14);
     --shadow-card: 0 1px 1px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.28);
   }
 
@@ -253,7 +265,7 @@
     border-radius: var(--radius-sm);
     padding: 8px 16px;
     background: var(--accent);
-    color: #fff;
+    color: var(--accent-ink);
     font: 700 14px var(--font-body);
     cursor: pointer;
     transition: background-color .2s ease;
@@ -650,17 +662,19 @@
       <h2 id="guitars-h">Guitars</h2>
       <div class="col">
         <ul class="links" data-suggest="guitars">
+          <li class="captitle">News</li>
           <li><a href="https://www.premierguitar.com/"><strong>Premier Guitar</strong></a></li>
           <li><a href="https://www.guitarworld.com/"><strong>Guitar World</strong></a></li>
           <li><a href="https://www.sweetwater.com/"><strong>Sweetwater</strong></a></li>
           <li><a href="https://reverb.com/"><strong>Reverb</strong></a></li>
+          <li><a href="https://www.andertons.co.uk/">Andertons</a></li>
+          <li><a href="https://www.thomann.de/">Thomann</a></li>
+          <li><a href="https://www.thegearpage.net/">The Gear Page</a></li>
+          <li class="captitle">Tabulature</li>
           <li><a href="https://www.ultimate-guitar.com/"><strong>Ultimate Guitar</strong></a></li>
           <li><a href="https://www.songsterr.com/"><strong>Songsterr</strong></a></li>
           <li><a href="https://911tabs.com/">911Tabs</a></li>
           <li><a href="https://chordify.net/">Chordify</a></li>
-          <li><a href="https://www.andertons.co.uk/">Andertons</a></li>
-          <li><a href="https://www.thomann.de/">Thomann</a></li>
-          <li><a href="https://www.thegearpage.net/">The Gear Page</a></li>
         </ul>
       </div>
     </section>
@@ -708,7 +722,6 @@
   const canvas = document.getElementById("heroCanvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
-  const hero = canvas.parentElement;
 
   const hexToRgb = hex => {
     const n = parseInt(hex.slice(1), 16);
@@ -782,20 +795,21 @@
   };
 
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
-  let visible = true, rafId = 0;
+  let rafId = 0;
 
   const frame = now => {
     draw(now / 1000);
     rafId = requestAnimationFrame(frame);
   };
   const sync = () => {
-    const shouldRun = visible && !reduceMotion.matches;
-    if (shouldRun && !rafId) { rafId = requestAnimationFrame(frame); }
-    if (!shouldRun && rafId) { cancelAnimationFrame(rafId); rafId = 0; }
-    if (!shouldRun) draw(0);
+    if (reduceMotion.matches) {
+      if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
+      draw(0);
+    } else if (!rafId) {
+      rafId = requestAnimationFrame(frame);
+    }
   };
 
-  new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }).observe(hero);
   reduceMotion.addEventListener("change", sync);
   sync();
 })();
